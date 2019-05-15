@@ -23,7 +23,6 @@ class Article {
     const text = this.domElement.className.split(" ");
     // console.log(text);
     if (text.includes("article-open")) {
-      console.log("working");
       this.expandButton.textContent = "close";
     } else {
       this.expandButton.textContent = "expand";
