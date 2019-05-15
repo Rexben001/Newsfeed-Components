@@ -4,36 +4,43 @@ class Article {
   constructor(domElement) {
     // assign this.domElement to the passed in domElement
     this.domElement = domElement;
-    // create a reference to the ".expandButton" class. 
-    this.expandButton = this.domElement.querySelector('.expandButton');
+    // create a reference to the ".expandButton" class.
+    this.expandButton = this.domElement.querySelector(".expandButton");
     // Using your expandButton reference, update the text on your expandButton to say "expand"
-    this.expandButton.textContent = 'expand';
+    this.expandButton.textContent = "expand";
 
     // Set a click handler on the expandButton reference, calling the expandArticle method.
-    this.expandButton.addEventListener('click', this.expandArticle.bind(this));
+    this.expandButton.addEventListener("click", this.expandArticle.bind(this));
+    this.createButton();
   }
 
   expandArticle() {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
-    this.domElement.classList.toggle('article-open');
-    this.changeText()
+    this.domElement.classList.toggle("article-open");
+    this.changeText();
   }
   changeText() {
-    const text = this.domElement.className.split(' ');
+    const text = this.domElement.className.split(" ");
     // console.log(text);
-    if (text.includes('article-open'))
-    {
-      console.log('working')
-      this.expandButton.textContent = 'close';
-    } else
-    {
-      this.expandButton.textContent = 'expand';
-
+    if (text.includes("article-open")) {
+      console.log("working");
+      this.expandButton.textContent = "close";
+    } else {
+      this.expandButton.textContent = "expand";
     }
+  }
+  createButton() {
+    this.domElement.insertAdjacentHTML(
+      "afterbegin",
+      `<button class='btn'>Delete</button>`
+    );
+    this.domElement.querySelector('.btn').addEventListener('click', this.removeArticle.bind(this));
 
   }
+  removeArticle() {
+    this.domElement.style.display = 'none';
+  }
 }
-
 
 /* START HERE: 
 
@@ -43,7 +50,7 @@ class Article {
 
 */
 
-let articles = document.querySelectorAll('.article');
+let articles = document.querySelectorAll(".article");
 articles.forEach(article => {
   new Article(article);
-})
+});
