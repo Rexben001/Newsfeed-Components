@@ -54,6 +54,11 @@
   border-bottom: none;
   z-index: 2;
   /* This set the layer level of the element, it has precendence over initial level of 1*/
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  transition: ease-in-out 2s;
 }
 .menu ul li {
   list-style-type: none;
@@ -64,10 +69,67 @@
 .menu--open {
   display: block;
 }
+.articles {
+  margin-top: 95px;
+}
+.article {
+  margin: 20px 10%;
+  padding: 0 20px 25px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+.article h2 {
+  font-size: 28px;
+  padding: 0;
+  margin: 15px 0 0;
+}
+.article .date {
+  margin: 0;
+  font-size: 14px;
+}
+.article .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.article .expandButton {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 12px;
+  color: grey;
+  cursor: pointer;
+  transform: translate(-50%);
+  background-color: white;
+  border: #686767 1px solid;
+  border-radius: 5px;
+  padding: 0.4rem;
+  margin-top: 0.3rem;
+  box-shadow: 0 2px 2px rgba(143, 141, 141, 0.486);
+  margin-bottom: 0.2rem;
+}
+.article-open {
+  height: 400px;
+}
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto';
   background-color: #fffef7;
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
